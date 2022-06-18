@@ -20,13 +20,20 @@ public class App {
 
     static void print_graphen(int[][] table){
         System.out.println("/\\");
-        for (int[] pos: table){
+        for (int y=0; y<table.length; y++){
+            int[] pos = table[y];
             System.out.print("|");
             for (int i=0; i<pos[0];i++){
                 System.out.print(" ");
             }
             System.out.println("*");
-        }
+            if (y!= table.length-1){
+                int steps = pos[1]-table[y+1][1];
+                for (int i=0; i<steps;i++){
+                    System.out.println("|");
+                }
+            }
+       }
         for (int i=0; i<table[0][0]+1; i++){
             System.out.print("---");
         }
@@ -34,7 +41,13 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        int[][] table_original = {{1,2}, {10,4}, {50,6},{11,2}, {7,4}, {5,6}};
+        int[][] table_original = {
+        {1,5}, 
+        {2,12}, 
+        {3,5}, 
+        {4,12}, 
+        {5,6}, 
+        {6,8}};
         int [][] table = resort_table(table_original);
         print_graphen(table);
         }
