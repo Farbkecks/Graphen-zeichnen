@@ -60,7 +60,7 @@ public class Zeichnen {
         System.out.println(">");
     }
 
-    public void zeichnen (int [][] table_original){
+    void zeichnen (int [][] table_original){
         int breite = table_original[table_original.length-1][0];
         int [][] table = resort_table(table_original);
         print_graphen(table, breite);
