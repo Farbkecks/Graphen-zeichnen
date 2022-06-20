@@ -1,8 +1,10 @@
-
-// import java.util.Scanner;
-// import java.util.Arrays;
-
 public class App {
+
+    final static String punkt = "--";
+    final static String linke_line = "|";
+    final static String untere_line = "---";
+    final static String platz_halter = "  ";
+
     static int[][] resort_table(int[][] table){
         int size = table.length;
 
@@ -19,22 +21,22 @@ public class App {
         return table;
     }
 
-    static void print_graphen(int[][] table){
+    static void print_graphen(int[][] table, int breite){
         System.out.println("/\\");
-        System.out.print("|");
+        System.out.print(linke_line);
         for (int y=0; y<table.length; y++){
             int[] pos = table[y];
             int steps_right = pos[0];
             if (y>0){
                 if(pos[1]==table[y-1][1]){
-                    steps_right = steps_right - table[y-1][0];
+                    steps_right = steps_right - table[y-1][0]-1;
                 }
             }
             
             for (int i=0; i<steps_right;i++){
-                System.out.print("    ");
+                System.out.print(platz_halter);
             }
-            System.out.print("*");
+            System.out.print(punkt);
             if (y!= table.length-1){
                 int steps_down = pos[1]-table[y+1][1];
                 if(steps_down==0){
@@ -42,17 +44,18 @@ public class App {
                 }
                 System.out.println();
                 for (int i=1; i<steps_down;i++){
-                    System.out.println("|");
+                    System.out.println(linke_line);
                 }
+                System.out.print(linke_line);
             }
         }
-        System.out.print("|");
-       for (int i=0; i<table[table.length-1][1];i++){
-            System.out.println("|");
+        System.out.println();
+       for (int i=1; i<table[table.length-1][1];i++){
+            System.out.println(linke_line);
        }
        System.out.println();
-        for (int i=0; i<table[0][0]+1; i++){
-            System.out.print("---");
+        for (int i=0; i<breite; i++){
+            System.out.print(untere_line);
         }
         System.out.println(">");
     }
@@ -66,8 +69,9 @@ public class App {
         {5,5}, 
         {6,8},
         {7,2}};
+        int breite = table_original[table_original.length-1][0];
         int [][] table = resort_table(table_original);
-        print_graphen(table);
+        print_graphen(table, breite);
 
         }
 }
