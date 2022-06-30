@@ -1,27 +1,15 @@
 import java.lang.Math;
-import java.util.ArrayList;
 
 public class Generator {
-    public static int[][] convertIntegers(ArrayList<int[]> table_arraylist)
-    {
-        int[][] table_array = new int[table_arraylist.size()][2];
-        for (int i=0; i < table_array.length; i++){
-            table_array[i][0] = table_arraylist.get(i)[0];
-            table_array[i][1] = table_arraylist.get(i)[1];
-        }
-        return table_array;
-    }
-    static int[][] generator(String user_input){
-    ArrayList<int[]> table = new ArrayList<>();
+    static int[][] generator(){
+    int[][] table = {{1,0},{2,0},{3,0},{4,0},{5,0},{6,0},{7,0},{8,0},{9,0},{10,0},{11,0},{12,0},{13,0},{14,0},{15,0},{16,0},{17,0},{18,0},{19,0},{20,0}};
     for (int i= 1; i<20;i++){
         int wert = (int) Math.round(Math.pow(Double.valueOf(i), 2.0));
         if (wert > 20){
-            break;
+            wert = 20;
         }
-        int[] cell = {i, wert};
-        table.add(1,cell);
+        table[i][1] = wert;
     }
-    int[][] table_r = convertIntegers(table);
-    return table_r;
+    return table;
     } 
 }
