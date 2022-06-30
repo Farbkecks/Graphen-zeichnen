@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
 class Graph {
+    public Coordinate2D[] graph;
 
     public void debugPrintAsList(){
         for(Coordinate2D point: graph){
-
+            System.out.println("x: " + point.x + " | y: " + point.y);
         }
     }
 
@@ -14,5 +15,6 @@ class Graph {
         for(int i=0; i<length; i++){
             graph[i] = points.get(i);
         }
+        this.graph = graph;
     }        
 }
