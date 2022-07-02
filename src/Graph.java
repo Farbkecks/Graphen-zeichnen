@@ -9,6 +9,10 @@ class Graph {
         }
     }
 
+    public void draw(){
+        Drawer.draw(graph);
+    }
+
     public Graph(ArrayList<Coordinate2D> points){
         int length = points.size();
         Coordinate2D[] graph = new Coordinate2D[length];
