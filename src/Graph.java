@@ -3,7 +3,7 @@ import java.util.ArrayList;
 class Graph {
     public Coordinate2D[] graph;
 
-    public void debugPrintAsList(){
+    public void printAsList(){
         for(Coordinate2D point: graph){
             System.out.println("x: " + point.x + " | y: " + point.y);
         }
