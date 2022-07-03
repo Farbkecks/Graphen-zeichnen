@@ -9,7 +9,7 @@
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "args": "Test Test2"
+            "args": "x^2"
         },
         {
             "type": "java",
