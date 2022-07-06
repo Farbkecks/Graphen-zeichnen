@@ -17,7 +17,7 @@ public class App {
             }
         }
         Graph graph = new Graph(Generator.generateBasicGraph(formel));
-        graph.printAsList();
-        graph.draw();
+        // graph.printAsList();
+        // graph.draw();
     }
 }

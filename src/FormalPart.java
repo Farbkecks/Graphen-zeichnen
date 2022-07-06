@@ -1,13 +1,13 @@
 public class FormalPart {
     Sign sign;
     Operation operation;
-    double y;
-    double resault;
+    double firstNummber;
+    double secondNummber;
 
-    public FormalPart(Sign sign, Operation operation, double y){
-        this.sign = sign;
-        this.operation = operation;
-        this.y = y;
-        this.resault=0;
+    public FormalPart(){
+        this.sign = Sign.none;
+        this.operation = Operation.none;
+        this.firstNummber = 0;
+        this.secondNummber=0;
     }
     }    
