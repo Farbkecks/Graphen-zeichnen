@@ -1,6 +1,6 @@
 public class FormalPart {
     Sign sign;
-    Operation operation;
+    Operation firstOperation;
     double firstNummber;
     double secondNummber;
     Operation secOperation;
@@ -9,7 +9,7 @@ public class FormalPart {
     public FormalPart(){
         this.sign = Sign.none;
         this.firstNummber = 0;
-        this.operation = Operation.none;
+        this.firstOperation = Operation.none;
         this.secondNummber=0;
         this.secOperation = Operation.none;
         this.thirtNummber = 0;
