@@ -12,7 +12,7 @@ public class App {
             } 
 
             default : {
-                System.out.println("Nur eine Formel angeben");
+            System.out.println("Nur eine Formel angeben");
                 System.exit(0);
             }
         }

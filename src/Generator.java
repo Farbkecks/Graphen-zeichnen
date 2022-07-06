@@ -17,13 +17,17 @@ enum Sign{
 
 public class Generator {
     static ArrayList<String> splitString(String formel){
-        char[] formelCharList = formel.toCharArray();
-        ArrayList<String> formelList = new ArrayList<>();
+        char[] formelCharList = formel.toCharArray(); //String in CharArray um für + und - zu suchen
+        ArrayList<String> formelList = new ArrayList<>(); //Liste mit den aufgeteilte Formel Parts
+        int oldSign = 0;
         for(int i=0; i<formelCharList.length;i++){
-            if(formelCharList[i] == '+'){
-                System.out.println("found +");
+            if(formelCharList[i] == '+' || formelCharList[i] == '-'){
+                formelList.add(formel.substring(oldSign,i));
+                oldSign = i;
             }
         }
+
+        formelList.add(formel.substring(oldSign,formelCharList.length));
         return formelList;
     }
 
