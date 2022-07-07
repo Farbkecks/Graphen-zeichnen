@@ -1,18 +1,7 @@
 import java.lang.Math;
 import java.util.ArrayList;
 
-enum Operation{
-    none,
-    times,
-    divided,
-    power
-}
 
-enum Sign{
-    none,
-    add,
-    subtract
-}
 
 public class Generator {
     // Die Orginale String Formel wird in eine Liste aus Strings geändert welche die einezelnen Rechenaufgaben zwischen + und - enthalten
@@ -105,6 +94,7 @@ public class Generator {
             }
             formelObjekts.add(formalPart);
         } 
+
         return formelObjekts;
     }
 
