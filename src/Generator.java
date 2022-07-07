@@ -1,4 +1,3 @@
-import java.lang.Math;
 import java.util.ArrayList;
 
 
@@ -71,6 +70,7 @@ public class Generator {
                 formalPart.indexforX = 1;
             }
             if(formelPartCharArray.length == 2){
+                formalPart.partVersion = PartVersion.one;
                 formelObjekts.add(formalPart);
                 continue;
             }
@@ -82,6 +82,7 @@ public class Generator {
                 formalPart.indexforX = 3;
             }
             if(formelPartCharArray.length == 4){
+                formalPart.partVersion = PartVersion.three;
                 formelObjekts.add(formalPart);
                 continue;
             }
@@ -92,6 +93,7 @@ public class Generator {
             } else{
                 formalPart.indexforX = 5;
             }
+            formalPart.partVersion = PartVersion.five;
             formelObjekts.add(formalPart);
         } 
 
@@ -101,26 +103,10 @@ public class Generator {
     static ArrayList<Coordinate2D> generateBasicGraph(String formel){
         ArrayList<String> formelList = splitString(formel);
         ArrayList<FormalPart> formelObjekts = getFormelPartOpjekts(formelList);
+        for(FormalPart i: formelObjekts){
+            System.out.println(i.calculatePart(2));
+        }
         ArrayList<Coordinate2D> graph = new ArrayList<>(); 
         return graph;
     } 
 }
-
-
-
-
-
-
-
-
-
-/*
- *       for (int x= 1; x<20;x++){
-            int y = (int) Math.round(Math.pow(Double.valueOf(x), 2.0));
-            if (y > 20){
-                break;
-            }
-            graph.add(new Coordinate2D(x, y));
-        }
- * 
- */
