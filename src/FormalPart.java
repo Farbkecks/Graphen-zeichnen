@@ -5,6 +5,7 @@ public class FormalPart {
     double secondNummber;
     Operation secOperation;
     double thirtNummber;
+    int indexforX;
 
     public FormalPart(){
         this.sign = Sign.none;
@@ -13,5 +14,6 @@ public class FormalPart {
         this.secondNummber=0;
         this.secOperation = Operation.none;
         this.thirtNummber = 0;
+        this.indexforX = 0;
     }
     }    

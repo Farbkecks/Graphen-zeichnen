@@ -28,6 +28,9 @@ public class Generator {
         }
 
         formelList.add(formel.substring(oldSign,formelCharList.length)); //Substring von letzen +/- bis zum Ende
+        String firstPart = formelList.get(0);
+        formelList.set(0, "+" + firstPart);
+
         return formelList;
     }
     static boolean testForNummer(char nummber){
@@ -40,33 +43,68 @@ public class Generator {
         return false;
     }
 
+    static Operation testForOperation(char caracter){
+        switch(caracter){
+            case '*': return Operation.times;
+            case '/': return Operation.divided;
+            case '^': return Operation.power;
+            default: {
+                System.out.println("Falsche einfabe bei Operation");
+                System.exit(1);
+                return Operation.none; //wird nicht erreicht nur für den Compieler
+            }
+        }
+    }
+
+    static Sign testForSign(char caracter){
+        switch(caracter){
+            case '+': return Sign.add;
+            case '-': return Sign.subtract;
+            default: {
+                System.out.println("Falsche einfabe bei dem Vorzeichen");
+                System.exit(1);
+                return Sign.none; //wird nicht erreicht nur für den Compieler
+            }
+        }
+    }
+
+
     static ArrayList<FormalPart> getFormelPartOpjekts(ArrayList<String> formelList){
         ArrayList<FormalPart> formelObjekts = new ArrayList<>();
         for(String formelPartString: formelList){
             FormalPart formalPart = new FormalPart();
             char[] formelPartCharArray = formelPartString.toCharArray();
-            int sign = 0;
-            if(formelPartCharArray[0] == '+'){
-                formalPart.sign = Sign.add;
-                sign = 1;
+            
+            formalPart.sign = testForSign(formelPartCharArray[0]);
+            if(testForNummer(formelPartCharArray[1]) == true){
+                formalPart.firstNummber = Character.getNumericValue(formelPartCharArray[1]);
+            } else{
+                formalPart.indexforX = 1;
             }
-            else if(formelPartCharArray[0] == '-'){
-                formalPart.sign = Sign.subtract;
-                sign = 1;
+            if(formelPartCharArray.length == 2){
+                formelObjekts.add(formalPart);
+                continue;
             }
-            formalPart.firstNummber = Character.getNumericValue(formelPartCharArray[0+sign]);
-            switch(formelPartCharArray[1+sign]){
-                case '*': {
-                    formalPart.firstOperation = Operation.times;
-                    break;
-                }
-                case '/': {
-                    formalPart.firstOperation = Operation.divided;
-                    break;
-                }
+
+            formalPart.firstOperation = testForOperation(formelPartCharArray[2]);
+            if(testForNummer(formelPartCharArray[3]) == true){
+                formalPart.secondNummber = Character.getNumericValue(formelPartCharArray[3]);
+            } else{
+                formalPart.indexforX = 3;
             }
-            } 
-        }
+            if(formelPartCharArray.length == 4){
+                formelObjekts.add(formalPart);
+                continue;
+            }
+
+            formalPart.secOperation = testForOperation(formelPartCharArray[4]);
+            if(testForNummer(formelPartCharArray[5]) == true){
+                formalPart.thirtNummber = Character.getNumericValue(formelPartCharArray[5]);
+            } else{
+                formalPart.indexforX = 5;
+            }
+            formelObjekts.add(formalPart);
+        } 
         return formelObjekts;
     }
 
