@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.lang.Math;
 
 
 public class Generator {
@@ -99,14 +99,27 @@ public class Generator {
 
         return formelObjekts;
     }
+    static ArrayList<Coordinate2D> calculateGraph(ArrayList<FormalPart> formelObjekts){
+        ArrayList<Coordinate2D> graph = new ArrayList<>(); 
+        for(int x = 1; x<20; x++){
+            double tempResulte = 0;
+            for(FormalPart part: formelObjekts){
+                tempResulte += part.calculatePart(x);
+            }
+            if(tempResulte < 0){
+                continue;
+            }
+            if(tempResulte > 50){
+                continue;
+            }
+            graph.add(new Coordinate2D(x, (int) Math.round(tempResulte)));
+        }
+        return graph;
+    }
 
     static ArrayList<Coordinate2D> generateBasicGraph(String formel){
         ArrayList<String> formelList = splitString(formel);
         ArrayList<FormalPart> formelObjekts = getFormelPartOpjekts(formelList);
-        for(FormalPart i: formelObjekts){
-            System.out.println(i.calculatePart(2));
-        }
-        ArrayList<Coordinate2D> graph = new ArrayList<>(); 
-        return graph;
+        return calculateGraph(formelObjekts);
     } 
 }
