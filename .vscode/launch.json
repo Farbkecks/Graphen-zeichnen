@@ -10,7 +10,8 @@
             "request": "launch",
             "mainClass": "${file}",
             // "args": "5+3*x-3*x^2"
-            "args": "3*x^2+4/x-5"
+            // "args": "3*x^2+4/x-5"
+            "args": "2^x"
         },
         {
             "type": "java",

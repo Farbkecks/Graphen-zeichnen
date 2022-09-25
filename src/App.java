@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
         String formel = "";
-        switch(args.length){
+        switch (args.length) {
             case 0: {
                 System.out.println("Bitte eine Formel angeben");
                 System.exit(0);
@@ -9,10 +9,10 @@ public class App {
             case 1: {
                 formel = args[0];
                 break;
-            } 
+            }
 
-            default : {
-            System.out.println("Nur eine Formel angeben");
+            default: {
+                System.out.println("Nur eine Formel angeben");
                 System.exit(0);
             }
         }
